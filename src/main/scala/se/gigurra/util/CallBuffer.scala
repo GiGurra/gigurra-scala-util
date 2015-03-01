@@ -30,7 +30,7 @@ class CallBuffer[InterfaceType: ClassTag] {
   def flush(receiver: InterfaceType) {
     while (bufferedCalls.nonEmpty) {
       val call = bufferedCalls.poll()
-      call.method.invoke(receiver, call.args)
+      call.method.invoke(receiver, call.args: _*)
     }
   }
 
